@@ -6,11 +6,11 @@
 #    By: hael-mou <hael-mou@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 02:57:35 by hael-mou          #+#    #+#              #
-#    Updated: 2023/11/28 11:46:11 by hael-mou         ###   ########.fr        #
+#    Updated: 2023/12/16 10:57:58 by hael-mou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= RPN
+NAME		:= PmergeMe
 
 #=== Directories : ============================================================
 SRC_DIR		:= .
@@ -28,7 +28,7 @@ INC_DIR		:= $(sort $(dir $(INC_FILES)))
 #=== Commands : ===============================================================
 CPP			:= c++
 RM			:= rm -rf
-CFLAGS		:= -Wall -Wextra -Werror -std=c++98
+CFLAGS		:= -std=c++98 -g -fsanitize=address #-Wall -Wextra -Werror 
 INCLUDE		:= $(addprefix -I, $(INC_DIR))
 
 #=== Colors : =================================================================
@@ -59,7 +59,8 @@ $(NAME): $(OBJ_DIR) $(OBJ_FILES)
 
 run: all
 	@clear
-	@./$(NAME)
+	@./$(NAME) 8 15 17 18 3 0 12 13 14 10 4 16 6 5 11 2 1 20 7 9 19
+#@./$(NAME) `jot -r 21 1 21 | tr '\n' ' '`
 
 clean:
 	@if [ -d $(OBJ_DIR) ]; then\
